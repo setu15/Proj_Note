@@ -72,13 +72,16 @@ bool HigeLayer::init() {
     
     mSlideBar = SlideBar::create();
     
-	//runAction(Follow::create(sprite));
+	runAction(Follow::create(sprite));
 
 	return true;
 }
 
 void HigeLayer::update(float deltaTime) {
-	
+    
+    auto sprite = (Player*)getChildByTag(55);
+    mSlideBar->setPosition(sprite->getPosition(),uiLayer);
+    
 	//プレイヤー２
 	{
 		auto sprite2 = (Player*)getChildByTag(55);

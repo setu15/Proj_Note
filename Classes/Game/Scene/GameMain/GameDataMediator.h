@@ -3,6 +3,8 @@
 
 #include "../../Object/Manager/PlayerManager.h"
 #include "../../Object/StageObject/Block/BlockManager.h"
+#include "Game/Scene/GameMain/ResultLayer.h"
+#include "Utility/Timer/Timer.h"
 
 enum PLAYERS{
 	PLAYER1 = 0,
@@ -29,6 +31,10 @@ public:
 
 	PlayerManager* mPlayerManager;
 	BlockManager* mBlockManager;
+    ResultLayer* mResult;
+    
+private:
+    MyUtil::Timer timer;
 };
 
 #endif

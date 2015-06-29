@@ -83,7 +83,8 @@ void GameDataMediator::update(float dt, UiObjectLayer* uiLayer){
         sprite1->getPhysicsBody()->setDynamic( false );
 		sprite2->getPhysicsBody()->setDynamic( false );
 
-        
+		auto size = cocos2d::Director::getInstance()->getWinSize();
+
         GoalAnimation goal;
         goal.action(mBlockManager->getGoalPos(),
                     this,
@@ -92,7 +93,8 @@ void GameDataMediator::update(float dt, UiObjectLayer* uiLayer){
 		
 		
 		auto BG = cocos2d::Sprite::create("Texture/GamePlay/GameStage/Goal.png");
-		BG->setPosition(mBlockManager->getGoalPos());
+		auto goalPos = cocos2d::Vec2(mBlockManager->getGoalPos().x, size.height / 2);
+		BG->setPosition(goalPos);
 		BG->setAnchorPoint(cocos2d::Vec2(0.5f,0.5f));
 		addChild(BG);
 		
@@ -107,7 +109,7 @@ void GameDataMediator::update(float dt, UiObjectLayer* uiLayer){
 			userDef->setIntegerForKey("clearStage", selectStage);
 			userDef->setIntegerForKey("selectStage", selectStage + 1);
 
-            mResult = ResultLayer::create(mBlockManager->getGoalPos());
+			mResult = ResultLayer::create(mBlockManager->getGoalPos());
             addChild(mResult,100);
         });
         auto delay = cocos2d::DelayTime::create(5.0f);

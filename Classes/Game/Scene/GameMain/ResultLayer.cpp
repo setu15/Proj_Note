@@ -80,16 +80,19 @@ void ResultLayer::selectScene(Vec2 pos){
     
    // auto icon = Sprite::create( "Texture/GamePlay/GameScene/Result/Pause_Logo.png" );
    // icon->setPosition( Vec2( 1190, 696 ) );
-    
+    auto size =	Director::getInstance()->getWinSize();
+
+	auto goalPos = Vec2(pos.x, size.height / 1.5f);
+
     auto BG = Sprite::create("Texture/GamePlay/GameScene/StageSelect/StageSelect_Mask.png");
-    BG->setPosition(Vec2(pos.x,pos.y));
+    BG->setPosition(goalPos);
     BG->setScale(3.0f,3.0f);
     BG->setAnchorPoint(Vec2(0.5f,0.5f));
     addChild(BG);
     
    // putButton( "Pause_Continue.png",	"Pause_Continue.png",	Vec2(pos.x, pos.y + 200 ), continueCallback	);
-    putButton( "Next.png",		"Next.png",	Vec2(pos.x, pos.y       ), nextCallback		);
-    putButton( "BackTitle.png",			"BackTitle.png",		Vec2(pos.x, pos.y - 200  ), titleCallback     );
+    putButton( "Next.png",		"Next.png",	goalPos , nextCallback		);
+	putButton("BackTitle.png", "BackTitle.png", Vec2(goalPos.x, goalPos.y - 200), titleCallback);
     
    
     
